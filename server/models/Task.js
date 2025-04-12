@@ -15,7 +15,7 @@ const taskSchema = new mongoose.Schema({
     assignedTo: { type: mongoose.Schema.Types.ObjectId, ref: "User"},
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User"},
     attechments: { type: String, default: null},
-    progess: { type: Number, default: 0},
+    progress: { type: Number, default: 0},
 },
 {
     timestamps: true,
