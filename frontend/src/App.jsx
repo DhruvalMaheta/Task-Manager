@@ -5,7 +5,8 @@ import Dashboard from './pages/Admin/Dashboard.jsx';
 import Login from './pages/Auth/Login.jsx';
 import SignUp from './pages/Auth/SignUp.jsx';
 import ManageTasks from './pages/Admin/ManageTasks.jsx';
-import Createtask from './pages/Admin/Createtask.jsx';
+import CreateTask from './pages/Admin/CreateTask.jsx';
+
 import ManageUser from './pages/Admin/ManageUser.jsx';
 
 import UserDashboard from './pages/User/UserDashboard.jsx';
@@ -14,6 +15,7 @@ import ViewTaskDetails from './pages/User/ViewTaskDetails.jsx';
 
 import PrivateRoute from './routes/PrivateRoutes.jsx';
 import UserProvider, { UserContext } from './context/userContext.jsx';
+import { Toaster } from 'react-hot-toast';
 
 const App = () => {
   return (
@@ -28,7 +30,7 @@ const App = () => {
             <Route element={<PrivateRoute allowedRoles={["admin"]} />}>
               <Route path='/admin/dashboard' element={<Dashboard />} />
               <Route path='/admin/tasks' element={<ManageTasks />} />
-              <Route path='/admin/create-tasks' element={<Createtask />} />
+              <Route path='/admin/create-tasks' element={<CreateTask />} />
               <Route path='/admin/users' element={<ManageUser />} />
             </Route>
 
@@ -45,6 +47,13 @@ const App = () => {
           </Routes>
         </Router>
       </div>
+
+      <Toaster 
+      toastOptions={{
+        className: "", style: {
+          fontSize: "13px",
+        },
+      }} />
     </UserProvider>
   )
 }
@@ -58,7 +67,7 @@ const Root = () => {
 
   if (loading) return <Outlet />;
 
-  if(!user) {
+  if (!user) {
     return <Navigate to="/login" />;
   }
   return user.role === "admin" ? <Navigate to="/admin/dashboard" /> : <Navigate to="/user/dashboard" />;
