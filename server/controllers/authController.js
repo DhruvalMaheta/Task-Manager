@@ -145,7 +145,7 @@ const updateUserProfile = async (req, res) => {
                 token: generateToken(updatedUser._id),
             });
         
-    } catch { error } {
+    } catch ( error ) {
         res.status(500).json({ message: "server error", error: error.message });
     }
 };
