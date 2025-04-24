@@ -93,7 +93,7 @@ const loginUser = async (req, res) => {
             token: generateToken(user._id),
         })
 
-    } catch { error } {
+    } catch ( error ){
         res.status(500).json({ message: "server error", error: error.message });
     }
 };
@@ -110,7 +110,7 @@ const getUserProfile = async (req, res) => {
 
         }
         res.json(user);
-    } catch { error } {
+    } catch ( error ) {
         res.status(500).json({ message: "server error", error: error.message });
     }
 };
@@ -145,7 +145,7 @@ const updateUserProfile = async (req, res) => {
                 token: generateToken(updatedUser._id),
             });
         
-    } catch { error } {
+    } catch ( error ) {
         res.status(500).json({ message: "server error", error: error.message });
     }
 };
